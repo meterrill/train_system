@@ -25,4 +25,14 @@ class Station
   define_method(:==) do |another_station|
     self.number().==(another_station.number()).&(self.id().==(another_station.id()))
   end
+
+  define_singleton_method(:find) do |id|
+    found_station = nil
+    Station.all().each() do |station|
+      if station.id().==(id)
+        found_station = station
+      end
+    end
+    found_station
+  end
 end

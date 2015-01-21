@@ -38,4 +38,14 @@ describe(Station) do
       expect(station1).to(eq(station2))
     end
   end
+
+  describe(".find") do
+    it("returns a station by its ID number") do
+      station1= Station.new({:number => 229, :id => nil})
+      station1.save()
+      station2= Station.new({:number => 229, :id => nil})
+      station2.save()
+      expect(Station.find(station2.id())).to(eq(station2))
+    end
+  end
 end
