@@ -7,5 +7,35 @@ describe(Station) do
       expect(Station.all()).to(eq([]))
     end
   end
-  
+
+  describe("#number") do
+    it("will tell you station number") do
+      station= Station.new({:number => 229, :id => nil})
+      expect(station.number()).to(eq(229))
+    end
+  end
+
+  describe("#id") do
+    it("will tell you station id") do
+      station= Station.new({:number => 229, :id => nil})
+      station.save()
+      expect(station.id()).to(be_an_instance_of(Fixnum))
+    end
+  end
+
+  describe("#save") do
+    it("lets you save stations to database") do
+    station= Station.new({:number => 229, :id => nil})
+    station.save()
+    expect(Station.all()).to(eq([station]))
+    end
+  end
+
+  describe("#==") do
+    it("is the same station if it has the same number and id") do
+      station1 = Station.new({:number => 229, :id => nil})
+      station2 = Station.new({:number => 229, :id => nil})
+      expect(station1).to(eq(station2))
+    end
+  end
 end
