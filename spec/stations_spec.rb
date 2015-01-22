@@ -1,7 +1,6 @@
 require('spec_helper')
 
 describe(Station) do
-
   describe(".all") do
     it("starts off with no stations") do
       expect(Station.all()).to(eq([]))
@@ -9,14 +8,14 @@ describe(Station) do
   end
 
   describe("#number") do
-    it("will tell you station number") do
+    it("will give the station a number") do
       station= Station.new({:number => 229, :id => nil})
       expect(station.number()).to(eq(229))
     end
   end
 
   describe("#id") do
-    it("will tell you station id") do
+    it("will tell give it a station id") do
       station= Station.new({:number => 229, :id => nil})
       station.save()
       expect(station.id()).to(be_an_instance_of(Fixnum))
@@ -25,9 +24,9 @@ describe(Station) do
 
   describe("#save") do
     it("lets you save stations to database") do
-    station= Station.new({:number => 229, :id => nil})
-    station.save()
-    expect(Station.all()).to(eq([station]))
+      station= Station.new({:number => 229, :id => nil})
+      station.save()
+      expect(Station.all()).to(eq([station]))
     end
   end
 
